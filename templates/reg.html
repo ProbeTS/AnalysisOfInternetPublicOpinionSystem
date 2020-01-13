@@ -1,0 +1,113 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册页面</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/layui/css/layui.css">
+    <script type="text/javascript" src="../static/js/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.form.js"></script>
+    <script type="text/javascript" src="../static/layui/layui.js"></script>
+</head>
+<body style="background-image: url('../static/images/back.jpg');background-attachment:fixed;background-size:cover">
+<div class="layui-bg-cyan" style="width:100%;height: 700px ;position:absolute;margin:0 0;opacity: 0.85"><!--虚化背景--></div>
+<div id="welcome" class="container form-group" style="width:400px;height:400px;position:absolute;left:50%;top:40%;margin:-200px -200px;display: none">
+    <br>
+    <h2 class="text-center" style="color: #f0f0f0">舆情分析系统注册</h2>
+    <form role="form" id="login" method="post" onsubmit="return false">
+        <div class="form-group">
+            <label for="num" style="color: #f0f0f0">账号:</label>
+            <input type="text" name="num" class="form-control" id="num" placeholder="请输入账号">
+        </div>
+        <div class="form-group">
+            <label for="name" style="color: #f0f0f0">用户名:</label>
+            <input type="text" name="name" class="form-control" id="name" placeholder="请输入用户名">
+        </div>
+        <div class="form-group" style="color: #f0f0f0">
+            <label for="pwd">密码:</label>
+            <input type="password" name="pwd" class="form-control" id="pwd" placeholder="请输入密码">
+        </div>
+        <div class="form-group" style="color: #f0f0f0">
+            <label for="reppwd">确认密码:</label>
+            <input type="password" name="reppwd" class="form-control" id="reppwd" placeholder="请再次输入密码">
+        </div>
+        <div class="form-group">
+            <label for="phone" style="color: #f0f0f0">电话:</label>
+            <input type="text" name="phone" class="form-control" id="phone" placeholder="请输入电话">
+        </div>
+        <div class="form-group">
+            <label for="email" style="color: #f0f0f0">邮箱:</label>
+            <input type="text" name="phone" class="form-control" id="email" placeholder="请输入邮箱">
+        </div>
+        <br>
+
+        <div align="center">
+            <div>
+                <button type="button" class="layui-btn" id="confirm" style="background-color:#0f6674;float:left;margin-left: 70px">确认</button>
+            </div>
+            <div>
+                <button type="reset" class="layui-btn" id="rrset" style="background-color:#0f6674;float:right;margin-right: 70px">重置</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+
+    $(document).ready(
+        function () {
+            $("#welcome").fadeIn(500);
+            $("#num").val("");
+            $("#name").val("");
+            $("#pwd").val("");
+            $("#reppwd").val("");
+            $("#phone").val("");
+            $("#email").val("")
+        }
+    );
+
+    function judge() {
+        return $("#pwd").val() === $("#reppwd").val();
+    }
+
+    $("#confirm").click(
+        function () {
+
+            if (!judge()) {
+                alert("您两次输入的密码不相同！")
+            }
+            else {
+            // 构造一个json数据以发送给后端
+            var data = {"num": $("#num").val(), "name": $("#name").val(), "passwd": $("#pwd").val(), "phone": $("#phone").val(), "email": $("#email").val()};
+            var json_data = JSON.stringify(data);
+
+            // ajax发送数据给后端
+            $.post("/reg",
+                json_data,
+                function (data) {
+
+                    // 解析后端发来的json数据
+                    var json_data = JSON.parse(data);
+                    var flag = json_data.flag;
+
+                    if (flag === true) {
+                        alert("恭喜您注册成功！");
+                        window.location.href = "./login";
+                    }
+                    else {
+                        alert("您注册的账号已存在！")
+                    }
+                }
+            );
+            }
+        }
+
+    );
+
+</script>
+
+</body>
+</html>

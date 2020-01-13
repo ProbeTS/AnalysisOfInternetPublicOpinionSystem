@@ -1,0 +1,254 @@
+@media (min-width: 1300px) {
+	
+}
+
+@media (max-width: 1600px) {
+	.container-fluid{
+	    width: 100%;
+	    padding-right: 15px;
+	    padding-left: 15px;
+	    margin-right: auto;
+	    margin-left: auto;
+	}
+}
+
+/* Portrait tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+	.profile-details .profile-details-inner .profile-content table tbody tr td {
+		font-size: 14px;
+	}
+	.profile-details .profile-details-inner .profile-content table tbody tr td span {
+		font-size: 14px;
+	}
+	.resume-area .single-resume.employee-resume .employee-list .single-employee .oppice-info .office-name p {
+    font-size: 14px;
+	}
+}
+/* Portrait tablets and small desktops */
+@media  (max-width: 1200px) {
+    .cd-logo {
+		top: 28px;
+		left: 30px;
+	}
+	.cd-nav-trigger {
+		top: 18px;
+		right: 30px;
+	}
+}
+/* Portrait tablets and small desktops */
+@media  (max-width: 1024px) {
+    .profile-details .profile-details-inner .btn-list .btn {
+		padding: 8px 10px;
+		margin-right: 3px;
+	}
+	
+	.profile-details .profile-details-inner .profile-content table tbody tr td b {
+		margin: 0 10px;
+	}
+	.resume-area .single-resume.education-resume .education-list .single-education p.midden{
+		margin-left:0px;
+	}
+	.portfolio-area .portfolio .filtering-button a {
+		padding: 8px 10px;
+	}
+	.service-area .service-list .single-service .service-title h4 {
+		font-size: 14px;
+	}
+	.testimonial-area .tsetimonial-info .slide-testimonai .single-testimonail .clint-info {
+		margin-top: 45px;
+		margin-left: 0;
+	}
+	.testimonial-area .tsetimonial-info{
+		background: rgba(0, 0, 0, 0.2);
+		margin-bottom: 5px;
+		margin-top:30px;
+		padding:60px 40px;
+	}
+	.testimonial-area .tsetimonial-info:before{
+		display: none;
+	}
+
+}
+/* Portrait tablets and small desktops */
+@media  (max-width: 991px) {
+    .mt-230 {
+		margin-top: 30px;
+	}
+	.service-area .service-list .single-service .service-title h4 {
+		font-size: 16px;
+	}
+
+	.profile-details .profile-details-inner .btn-list .btn {
+		padding: 8px 20px;
+		margin-right: 15px;
+	}
+	.footer-social.text-right {
+		text-align: left !important;
+		margin-top:15px;
+	}
+	.social-media ul li {
+		margin-left: 0px;
+		margin-right: 8px;
+	}
+	.education-list .single-education .text-right{
+		text-align: left !important;
+	}
+	.resume-area .single-resume.education-resume .education-list .single-education p span{
+		top:-5px;
+	}
+	.resume-area .single-resume.education-resume .education-list .single-education p.midden{
+		margin-left: 0px;
+		margin:15px 0;
+	}
+	.resume-area .single-resume.education-resume .education-list .single-education p.midden span{
+		top:-5px;
+	}
+	.resume-area .single-resume.education-resume .education-list .single-education p.last span{
+		top:-5px;
+	}
+	.resume-area .single-resume.education-resume .education-list .single-education p{
+		margin: 5px 0;
+	}
+	.employ-year.text-right {
+		text-align: left !important;
+		padding-left: 55px;
+	}
+	.employ-year{
+		margin-top: 15px;
+	}
+	.resume-area .single-resume.skill-resume {
+		margin-top: 30px;
+	}
+	.portfolio-area .portfolio .filtering-button a {
+		margin-bottom: 5px;
+	}
+	.service-area .service-list .single-service{
+		margin-top:30px;
+	}
+	.mt-165 {
+		margin-top: 0;
+	}
+	.testimonial-area .happy-slints {
+		margin-top: 0;
+	}
+	.contact-area .contact-from {
+		margin-top: 30px;
+	}
+}
+@media  (max-width: 768px) {
+    .cd-logo {
+		left: 25px;
+	}
+	.cd-nav-trigger {
+		right: 25px;
+	}
+}
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+    
+	
+	.footer-social.text-right {
+		text-align: left !important;
+	}
+	.social-media ul li {
+		margin-left: 0;
+		margin-right: 8px;
+		margin-top:15px;
+	}
+	.cd-logo {
+		left: 15px;
+	}
+	.cd-nav-trigger {
+		right: 15px;
+	}
+	.table-responsive {
+		border: 1px solid transparent;
+	}
+}
+
+/* Landscape phones and smaller */
+@media (max-width: 480px) {
+	.profile-details .profile-details-inner .btn-list .btn {
+		padding: 8px 10px;
+		margin-right: 0px;
+	}
+	.resume-area .single-resume.education-resume .education-list .single-education p span{
+		top:0px;
+	}
+	.profile-details .profile-details-inner .profile-content table tbody tr td {
+		font-size: 14px;
+	}
+	.profile-details .profile-details-inner .profile-content table tbody tr td span {
+		font-size: 14px;
+	}
+	
+}
+@media (max-width: 470px){
+	.profile-area .profile-info .profile-inner .profile-name h1 {
+		font-size: 32px;
+	}
+	.social-media ul li {
+		margin-right: 2px;
+	}
+	.profile-details .profile-details-inner .btn-list .btn {
+		padding: 8px 20px;
+		display: block;
+		margin-top:15px;
+	}
+	.resume-area .single-resume .resume-title h3 {
+		font-size: 20px;
+		letter-spacing: 2px;
+	}
+	.service-area .service-info .inner-content .service-info-title h2{
+		font-size: 28px;
+	}
+	.service-area .service-info .btn-list .btn{
+		margin-top: 15px;
+	}
+	.contact-area .profile-details .profile-details-inner .profile-details-title h3 br{
+		display: none;
+	}
+	.contact-area .profile-details .profile-details-inner .profile-details-title h3 {
+		font-size: 20px;
+	}
+	.contact-area .contact-from .from-title h3{
+		font-size: 20px;
+	}
+	.testimonial-area .happy-slints .btn {
+		display: block;
+		margin-bottom: 15px;
+	}
+	.btn{
+		padding:10px 20px;
+	}
+	.profile-details .profile-details-inner .btn-list .btn{
+		padding:10px 20px;
+	}
+	.contact-area .contact-from .from-area form .submit-btn button{
+		padding: 10px 30px;
+	}
+}
+@media (max-width: 375px) {
+	
+	.profile-area .profile-info {
+		padding: 100px 40px;
+	}
+	.resume-area .single-resume.education-resume .education-list .single-education p.midden span{
+		top:0px;
+	}
+	.btn{
+		padding:10px 20px;
+	}
+	.profile-details .profile-details-inner .btn-list .btn{
+		padding:10px 20px;
+	}
+	.contact-area .contact-from .from-area form .submit-btn button{
+		padding: 10px 30px;
+	}
+}
+@media (max-width: 320px) {
+	.profile-area .profile-info {
+		padding: 60px 30px;
+	}
+	
+}

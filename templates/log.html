@@ -1,0 +1,69 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆页面</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/layui/css/layui.css">
+    <script type="text/javascript" src="../static/js/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.form.js"></script>
+    <script type="text/javascript" src="../static/layui/layui.js"></script>
+</head>
+<body style="background-image: url('../static/images/back.jpg');background-attachment:fixed;background-size:cover">
+<div class="layui-bg-cyan rounded-pill" style="width:660px;height:400px;position:absolute;left:50%;top:50%;margin:-200px -330px;opacity: 0.85">
+    <!--虚化背景-->
+</div>
+<div id="welcome" class="container form-group" style="width:400px;height:400px;position:absolute;left:50%;top:50%;margin:-200px -200px;display: none">
+    <br><br><br><br>
+    <h1 class="text-center" style="color: #f0f0f0">舆情分析系统</h1>
+    <form role="form" id="login" method="post" action="/login">
+        <div class="form-group">
+            <label for="num" style="color: #f0f0f0">账号:</label>
+            <input type="text" name="num" class="form-control" id="num" placeholder="请输入账号">
+        </div>
+        <div class="form-group" style="color: #f0f0f0">
+            <label for="pwd">密码:</label>
+                    <input type="password" name="passwd" class="form-control" id="pwd" placeholder="请输入密码">
+        </div>
+        <div align="center">
+            <div>
+                <button type="submit" class="layui-btn" id="log" style="background-color:#0f6674;float:left;margin-left: 70px">登录</button>
+            </div>
+            <div>
+                <button type="button" class="layui-btn" id="reg" style="background-color:#0f6674;float:right;margin-right: 70px">注册</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+
+    $(document).ready(
+        function () {
+            $("#welcome").fadeIn(500);
+
+            {% if (flag == true) %} {
+                document.cookie={{ token }};
+                window.location.href = "./main";
+            }
+            {% endif %}
+
+
+            $("#reg").click(
+                function() {
+                    window.location.href = "./reg"
+                }
+            );
+
+        }
+    );
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,204 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简介页面</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/carousel.css">
+    <link rel="stylesheet" type="text/css" href="../static/layui/css/layui.css" media="all">
+    <script type="text/javascript" src="../static/js/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.form.js"></script>
+    <script type="text/javascript" src="../static/layui/layui.js"></script>
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+</head>
+<body>
+
+
+<div class="layui-bg-cyan" style="width:100%;height: auto ;position:absolute;margin:0 0;opacity: 0.85"><!--虚化背景--></div>
+
+<ul class="layui-nav layui-bg-cyan">
+    <li class="layui-nav-item layui-this"><a href="/main">首页</a></li>
+    <li class="layui-nav-item"><a href="/resume">个人主页</a></li>
+    <li class="layui-nav-item"><a href="/personal">个人情感分析</a></li>
+    <li class="layui-nav-item"><a href="/topic">话题舆情分析</a></li>
+    <li class="layui-nav-item"><a href="/">登出</a></li>
+</ul>
+
+<main role="main">
+
+
+
+    <div class="layui-bg-cyan" style="width:100%;height: auto ;position:absolute;margin:0 0;opacity: 0.85">
+    <br><br><br><br>
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div id="roleDiv" class="row" style="display: none;">
+      <div class="col-lg-4">
+        <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="../static/images/demo2.jpg">
+        <h2>Heading</h2>
+        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+
+      <div class="col-lg-4">
+        <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="../static/images/demo1.jpg">
+        <h2>Heading</h2>
+        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+
+      <div class="col-lg-4">
+        <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="../static/images/demo6.jpg">
+        <h2>Heading</h2>
+        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette" id="personDiv"  style="display: none;">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">个人主页</h2>
+          <br><br><br>
+        <p class="lead">{{ perIntro }}</p>
+          <br><br><br>
+        <p><a class="btn btn-secondary" href="/resume" role="button">View details &raquo;</a></p>
+      </div>
+      <div class="col-md-5">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette"  id="topicDiv" style="display: none;">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading">个人情感分析</h2>
+          <br><br><br>
+        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          <br><br><br>
+        <p><a class="btn btn-secondary" href="/personal" role="button">View details &raquo;</a></p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette" id="noneDiv" style="display: none;">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">话题舆情分析</h2>
+          <br><br><br>
+        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          <br><br><br>
+        <p><a class="btn btn-secondary" href="/topic" role="button">View details &raquo;</a></p>
+      </div>
+      <div class="col-md-5">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+
+  </div><!-- /.container -->
+
+
+  <!-- FOOTER -->
+  <footer class="container">
+    <p class="float-right">
+      <a href="#">
+          <span class="glyphicon glyphicon-menu-up" style="color: white;"></span>
+          <span class="glyphicon-class" style="color: white;">置顶</span>
+      </a>
+    </p>
+    <p>&copy; 2019-2020 Company, Inc. &middot; <a href="#" style="color: white;">Privacy</a> &middot; <a href="#" style="color: white;">Terms</a></p>
+      <br><br><br>
+  </footer>
+</div>
+</main>
+
+
+
+<script>
+    console.log(document.cookie);
+layui.use('element', function(){
+  var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+  //监听导航点击
+  element.on('nav(demo)', function(elem){
+    //console.log(elem)
+    layer.msg(elem.text());
+  });
+});
+</script>
+
+<script>
+layui.use('carousel', function(){
+  var carousel = layui.carousel;
+  //建造实例
+  carousel.render({
+      elem: '#carouselId',
+      width: '100%',
+      height: '90%',
+      arrow: 'always', //始终显示箭头
+  });
+});
+</script>
+
+<script>
+
+    $(document).ready(function(){
+        $("#roleDiv").fadeIn(500);
+
+        $(window).scroll(function (){
+            if ($(window).scrollTop()>100) {
+                $("#personDiv").fadeIn(500);
+            }
+
+            if ($(window).scrollTop()>650) {
+                $("#topicDiv").fadeIn(500);
+            }
+
+            if ($(window).scrollTop()>1200) {
+                $("#noneDiv").fadeIn(500);
+            }
+        });
+    });
+
+
+</script>
+
+</body>
+</html>

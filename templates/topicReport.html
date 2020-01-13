@@ -1,0 +1,379 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>话题舆情分析</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/map.css">
+
+    <script type="text/javascript" src="../static/js/highmaps.js"></script>
+    <script type="text/javascript" src="../static/js/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.form.js"></script>
+    <script type="text/javascript" src="../static/layui/layui.js"></script>
+    <script type="text/javascript" src="../static/js/exporting.js"></script>
+    <script src="https://data.jianshukeji.com/geochina/china.js"></script>
+    <script type="text/javascript" src="../static/js/wordcloud2.js"></script>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="../static/css/blog.css" rel="stylesheet">
+
+
+
+</head>
+
+<body>
+
+<ul class="layui-nav layui-bg-cyan">
+    <li class="layui-nav-item"><a href="/main">首页</a></li>
+    <li class="layui-nav-item"><a href="/resume">个人主页</a></li>
+    <li class="layui-nav-item"><a href="/personal">个人情感分析</a></li>
+    <li class="layui-nav-item layui-this"><a href="/topic">话题舆情分析</a></li>
+    <li class="layui-nav-item"><a href="/">登出</a></li>
+</ul>
+
+
+
+
+    <br><br>
+
+<div class="container">
+
+
+    <div class="row mb-2">
+    <div class="col-md-12">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+
+            <h1 class="display-4 font-italic">话题舆情分析报告</h1>
+            <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
+
+        </div>
+      </div>
+    </div>
+
+    </div>
+
+  <div class="row mb-2">
+
+    <div class="col-md-6">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+
+            <div id="chart" style="min-width:500px;height:500px;"></div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+            <div id="charta" style="min-width:500px;height:500px"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+    <div class="row mb-2">
+    <div class="col-md-12">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+
+            <div id="linear" style="max-width:1000px;height:400px"></div>
+
+        </div>
+      </div>
+    </div>
+
+    </div>
+
+
+    <div class="row mb-2">
+    <div class="col-md-12">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+
+            <div id="map" style="width:1050px;height: 500px;"></div>
+
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <div class="row mb-2">
+    <div class="col-md-12">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+
+            <text x="250" text-anchor="middle" style="color:#333333;font-size:18px;fill:#333333;text-align: center">关键词云</text>
+            <div id="cloud" style="width:1050px;height: 500px;"></div>
+
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+
+
+
+
+
+</div>
+
+<script>
+$(document).ready(
+    function () {
+        // 构造一个json数据以发送给后端
+        var json_data = localStorage.getItem("temp");
+        // var json_data = JSON.stringify(data);
+        console.log(json_data);
+
+        // ajax发送数据给后端
+        $.post("/topicReport",
+            json_data,
+            function (data) {
+                var json_data = JSON.parse(data);
+                renderSexRatio(json_data);
+                renderEmoDistr(json_data);
+                renderEmoTiRatio(json_data);
+                renderChnMap(json_data);
+                renderWordCloud(json_data);
+
+            }
+        );
+    }
+);
+</script>
+
+
+<script>
+
+function renderWordCloud(json_data) {
+    // var list = [['foo', 12], ['bar', 6], ['你好', 59], ['谁在说话', 90]];
+    // js接收后端发来的数据
+    // var val = '{{ perlist|tojson }}';
+    // var json_data = JSON.parse(val);
+    var word = json_data.wCloud;
+
+    WordCloud($("#cloud")[0], { list: word } );
+}
+
+
+</script>
+
+
+
+<script>
+// 随机数据
+// var data = [{"name":"北京","value":27},{"name":"天津","value":77},{"name":"河北","value":11},{"name":"山西","value":83},{"name":"内蒙古","value":49},{"name":"辽宁","value":65},{"name":"吉林","value":57},{"name":"黑龙江","value":31},{"name":"上海","value":50},{"name":"江苏","value":21},{"name":"浙江","value":31},{"name":"安徽","value":85},{"name":"福建","value":73},{"name":"江西","value":47},{"name":"山东","value":49},{"name":"河南","value":72},{"name":"湖北","value":66},{"name":"湖南","value":47},{"name":"广东","value":18},{"name":"广西","value":57},{"name":"海南","value":50},{"name":"重庆","value":76},{"name":"四川","value":55},{"name":"贵州","value":16},{"name":"云南","value":60},{"name":"西藏","value":24},{"name":"陕西","value":54},{"name":"甘肃","value":21},{"name":"青海","value":78},{"name":"宁夏","value":16},{"name":"新疆","value":57},{"name":"台湾","value":91},{"name":"香港","value":58},{"name":"澳门","value":27},{"name":"南海诸岛","value":58},{"name":"南海诸岛","value":80}];
+// 初始化图表
+
+function renderChnMap(json_data) {
+    // js接收后端发来的数据
+    // var val = '{{ perlist|tojson }}';
+    // var json_data = JSON.parse(val);
+    var data = json_data.chnMap;
+
+    var map = new Highcharts.Map('map', {
+      title: {
+        text: '言论发布地点统计'
+      },
+      colorAxis: {
+        min: 0,
+        minColor: 'rgb(255,255,255)',
+        maxColor: '#006cee'
+      },
+      series: [{
+        data: data,
+        name: '言论数量',
+        mapData: Highcharts.maps['cn/china'],
+        joinBy: 'name' // 根据 name 属性进行关联
+      }]
+    });
+}
+
+</script>
+
+
+<script>
+layui.use('element', function(){
+  var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+  //监听导航点击
+  element.on('nav(demo)', function(elem){
+    //console.log(elem)
+    layer.msg(elem.text());
+  });
+});
+</script>
+
+<script>
+
+function renderEmoDistr(json_data) {
+    // js接收后端发来的数据
+    // var val = '{{ perlist|tojson }}';
+    // var json_data = JSON.parse(val);
+    var data = json_data.emoDistr;
+
+    Highcharts.chart('chart', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: '情感分析'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Brands',
+            colorByPoint: true,
+            data: data
+        }]
+    });
+}
+
+
+</script>
+
+<script>
+
+function renderSexRatio(json_data) {
+    // js接收后端发来的数据
+    // var val = '{{ perlist|tojson }}';
+    // var json_data = JSON.parse(val);
+    var data = json_data.sexRatio;
+
+    Highcharts.chart('charta', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: '男女比分布'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Brands',
+            colorByPoint: true,
+            data: data
+        }]
+    });
+}
+
+
+</script>
+
+<script>
+
+function renderEmoTiRatio(json_data) {
+    // js接收后端发来的数据
+    // var val = '{{ perlist|tojson }}';
+    // var json_data = JSON.parse(val);
+    var data = json_data.emoTiRatio;
+
+    var chart = Highcharts.chart('linear', {
+        title: {
+            text: '情感波动情况'
+        },
+        subtitle: {
+            text: '数据来源：焦糖爬虫系统'
+        },
+        yAxis: {
+            title: {
+                text: '人数'
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+        plotOptions: {
+            series: {
+                label: {
+                    connectorAllowed: false
+                },
+                pointStart: 2010
+            }
+        },
+        series: data,
+        responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 2000
+                },
+                chartOptions: {
+                    legend: {
+                        layout: 'horizontal',
+                        align: 'center',
+                        verticalAlign: 'bottom'
+                    }
+                }
+            }]
+        }
+    });
+
+}
+
+</script>
+
+
+</body>
+</html>

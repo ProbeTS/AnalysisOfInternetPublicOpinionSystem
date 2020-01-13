@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人情感分析</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/layui/css/layui.css">
+    <script type="text/javascript" src="../static/js/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.form.js"></script>
+    <script type="text/javascript" src="../static/layui/layui.js"></script>
+</head>
+<body style="background-image: url('../static/images/back.jpg');background-attachment:fixed;background-size:cover">
+
+<ul class="layui-nav layui-bg-cyan">
+    <li class="layui-nav-item"><a href="/main">首页</a></li>
+    <li class="layui-nav-item"><a href="/resume">个人主页</a></li>
+    <li class="layui-nav-item layui-this"><a href="/personal">个人情感分析</a></li>
+    <li class="layui-nav-item"><a href="/topic">话题舆情分析</a></li>
+    <li class="layui-nav-item"><a href="/">登出</a></li>
+</ul>
+
+
+<div class="layui-bg-cyan rounded-pill" style="width:660px;height:400px;position:absolute;left:50%;top:55%;margin:-200px -330px;opacity: 0.85">
+    <!--虚化背景-->
+</div>
+<div style="width:600px;height:400px;position:absolute;left:50%;top:50%;margin:-200px -300px">
+    <br><br><br><br><br><br><br>
+    <p id="welcome" class="text-center" style="display:none;font-size: 100px;color: #F0F0F0">Welcome!</p>
+    <p id="welcome1" class="text-center" style="display: none;font-size:20px;color: #F0F0F0">本页为个人情感分析系统</p>
+    <div id="welcome2" style="display: none" align="center">
+        <br>
+        <br>
+        <button id="entry" class="layui-btn" style="background-color: #0f6674;font-size: 20px">
+            进入系统
+        </button>
+    </div>
+</div>
+
+<script>
+layui.use('element', function(){
+  var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+  //监听导航点击
+  element.on('nav(demo)', function(elem){
+    //console.log(elem)
+    layer.msg(elem.text());
+  });
+});
+
+    $("#welcome").fadeIn(1000);
+    $("#welcome1").fadeIn(1300);
+    $("#welcome2").fadeIn(1600);
+    $("#entry").click(function () {
+        localStorage.setItem("temp",JSON.stringify({"num": document.cookie}));
+        window.location.href="/perReport";
+    })
+</script>
+
+</body>
+</html>
