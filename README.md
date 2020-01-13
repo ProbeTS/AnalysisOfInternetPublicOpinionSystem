@@ -28,39 +28,39 @@ There are five functions implemented so far but there are a lot to improve.
 
 The pages are as follows.
 
-![image-20200113222254059](C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20200113222254059.png)
+![image-20200113222254059](.\static\images\image-20200113222254059.png)
 
-![image-20200113222330846](C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20200113222330846.png)
+![image-20200113222330846](.\static\images\image-20200113222330846.png)
 
 ## Home page display function
 
 The pages are as follows.
 
-![image-20200113222600132](C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20200113222600132.png)
+![image-20200113222600132](.\static\images\image-20200113222600132.png)
 
 ## Personal information display function
 
 The pages are as follows.
 
-![image-20200113222626091](C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20200113222626091.png)
+![image-20200113222626091](.\static\images\image-20200113222626091.png)
 
 ## Personal emotion analysis function
 
 The pages are as follows.
 
-![image-20200113222652258](C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20200113222652258.png)
+![image-20200113222652258](.\static\images\image-20200113222652258.png)
 
-![image-20200113222711049](C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20200113222711049.png)
+![image-20200113222711049](.\static\images\image-20200113222711049.png)
 
 ## Topic public opinion analysis function
 
 The pages are as follows.
 
-![image-20200113222732229](C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20200113222732229.png)
+![image-20200113222732229](.\static\images\image-20200113222732229.png)
 
 ![image-20200113222744955](C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20200113222744955.png)
 
-![image-20200113222758239](C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20200113222758239.png)
+![image-20200113222758239](.\static\images\image-20200113222758239.png)
 
 
 
